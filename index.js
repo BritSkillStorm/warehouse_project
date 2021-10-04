@@ -11,6 +11,30 @@ app.use(express.static('public'));
 
 
 
+
+
+app.use('/itemForm', require('./routes/itemForm.js'));
+app.use('/items', require('./routes/api/itemRoutes.js'));
+
+
+// backend routes.
+
+app.get('/', (req, res) =>{
+    res.sendFile(resolve('public', 'views', 'index.html'));
+})
+
+app.get('#', (req, res) =>{
+    res.sendFile(resolve('public', 'views', 'index.html'));
+})
+
+
+
+
+
+
+
+
+
 app.listen(PORT, ()=> {
     console.log(`Server running on port ${PORT}`);
 })
