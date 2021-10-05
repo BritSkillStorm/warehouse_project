@@ -2,13 +2,13 @@ const Item =require('../models/Item');
 const mongoose = require('mongoose');
 
 
-const addItem = async({id, name, amount, description}) =>{
+const addItem = async({ itemName, amount, price, description}) =>{
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        const item = new Item({id, name, amount, description});
+        const item = new Item({itemName, amount, price, description});
         await item.save();
         mongoose.connection.close();
-        return {status: 201, message: `${name} successfully created!`};
+        return {status: 201, message: `${itemName} successfully created!`};
     } catch (err) {
         mongoose.connection.close();
         throw{status: 500, error: `Could not create item.`};
@@ -16,10 +16,10 @@ const addItem = async({id, name, amount, description}) =>{
 }
 
 
-const deleteItem = async (name) =>{
+const deleteItem = async (itemName) =>{
     try{
         await mongoose.connection(process.env.MONGO_URI);
-        await Item.deleteOne({name});
+        await Item.deleteOne({itemName});
         mongoose.connection.close();
         return;
     } catch(err) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const {resolve} = require('path');
 require('dotenv').config();
+const routes = require('./server');
 
 const app = express();
 const PORT = process.env.PORT || 8080;

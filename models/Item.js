@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
-    id: Number,
-    name: String,
+    itemName:{
+        type: String,
+        required: true
+    },
     amount: Number,
+    price: Number,
     description: String
 
 });
