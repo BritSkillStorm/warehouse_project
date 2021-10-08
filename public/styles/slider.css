@@ -19,7 +19,7 @@ body {
 .slider {
   margin:auto;
   height: 70%;
-  width:auto;
+  width:100%;
   position: relative;
   overflow: hidden;
   display: -webkit-box;
