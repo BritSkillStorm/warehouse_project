@@ -1,38 +1,26 @@
+const { application } = require('express');
 const express = require('express');
 const {resolve} = require('path');
 require('dotenv').config();
-const routes = require('./server');
 
+
+
+// intializing express
 const app = express();
+// creating port
 const PORT = process.env.PORT || 8080;
-
+// encoding json
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+//setting static folder to public
 app.use(express.static('public'));
 
 
 
 
 
-app.use('/itemForm', require('./routes/itemForm.js'));
-app.use('/items', require('./routes/api/itemRoutes.js'));
-
-
-// backend routes.
-
-app.get('/', (req, res) =>{
-    res.sendFile(resolve('public', 'views', 'index.html'));
-})
-
-app.get('#', (req, res) =>{
-    res.sendFile(resolve('public', 'views', 'index.html'));
-})
-
-
-
-
-
-
+// routing to route folder for calls.
+app.use('/', require('./routes/index'));
 
 
 

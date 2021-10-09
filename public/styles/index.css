@@ -17,6 +17,17 @@ body{
   font-family: 'Source Sans Pro', sans-serif;
   line-height: 1.6;
   background-color: #C6C5B9;
+
+}
+
+/* remove scroll bars, but keep function*/
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
 
 ul{
@@ -125,7 +136,9 @@ img {
     margin-top: auto;
   }
   
-  
+  .card-link-image:hover{
+      cursor: pointer;
+  }
  
   
  

@@ -10,10 +10,10 @@ router.get("/", (req, res) =>{
     }
 })
 
-// Login
-router.get("/", (req, res) =>{
+//  Warehouse
+router.get("/wareHouse", (req, res) =>{
     try {
-    res.status(200).sendFile(resolve("public", "views", "index.html"));
+    res.status(200).sendFile(resolve("public", "views", "warehousePortal.html"));
     } catch(err) {
         console.error(err);
     }

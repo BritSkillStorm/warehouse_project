@@ -19,7 +19,7 @@ router.get('/', async (req, res) =>{
 
 router.get('/:name', (req, res) => {
     console.log(req.params.name);
-    res.sendFile(resolve('public', 'views', 'index.html'));
+    res.sendFile(resolve('public', 'views', 'warehousePortal.html'));
 })
 
 
@@ -28,7 +28,7 @@ router.post('/', async (req, res) =>{
     try {    
         const data = await addItem(req.body);
         console.log(data);
-        res.sendFile(resolve('public', 'views', 'index.html'));
+        res.sendFile(resolve('public', 'views', 'warehousePortal.html'));
     } catch(err) {
     res.status(500).json(err);
     }
