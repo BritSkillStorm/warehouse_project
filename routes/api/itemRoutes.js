@@ -16,6 +16,7 @@ router.get('/', async (req, res) =>{
 
 
 // Get one item
+/*
 
 router.get('/:name', (req, res) => {
     console.log(req.params.name);
@@ -45,6 +46,6 @@ router.delete('/:name', async (req, res) =>{
         res.status(500).json(err);
     }
 })
-
+*/
 
 module.exports = router;

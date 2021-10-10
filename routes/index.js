@@ -11,7 +11,7 @@ router.get("/", (req, res) =>{
 })
 
 //  Warehouse
-router.get("/wareHouse", (req, res) =>{
+router.get("/warehouse", (req, res) =>{
     try {
     res.status(200).sendFile(resolve("public", "views", "warehousePortal.html"));
     } catch(err) {
@@ -20,9 +20,9 @@ router.get("/wareHouse", (req, res) =>{
 })
 
 // Product
-router.get("/", (req, res) =>{
+router.get("/company", (req, res) =>{
     try {
-    res.status(200).sendFile(resolve("public", "views", "index.html"));
+    res.status(200).sendFile(resolve("public", "views", "companyA.html"));
     } catch(err) {
         console.error(err);
     }

@@ -1,6 +1,5 @@
-const { application } = require('express');
+
 const express = require('express');
-const {resolve} = require('path');
 require('dotenv').config();
 
 
