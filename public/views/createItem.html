@@ -18,11 +18,24 @@
 <body>
 
     
-    <h1>Ware House landing</h1>
+    <h1>Item Form</h1>
     
-    
-
-        <a href="/form">Click here to add an item</a>
+    <form id="itemForm" method="POST" action="/items">
+        <div>
+            <label for="itemName">Item name: </label>
+            <input id="itemName" type="text" name="itemName"/>
+        </div>
+        <div>
+           Amount: <input type="number" name="amount"/>
+        </div>
+        <div>
+            Price <input type="number" name="price"/>
+        </div>
+        <div>
+            Description 
+            <textarea rows="4" cols="50" name="description" form ="itemForm"></textarea>
+        </div>
+        <input type="submit" value="Submit"/>
         
 </body>
 </html>

@@ -19,6 +19,9 @@ app.use(express.static('public'));
 
 
 // routing to route folder for calls.
+app.use('/companies', require('./routes/api/companyRoutes'));
+app.use('/warehouses', require('./routes/api/warehouseRoutes'));
+app.use('/items', require('./routes/api/itemRoutes'));
 app.use('/', require('./routes/index'));
 
 

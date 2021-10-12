@@ -19,10 +19,10 @@ router.get("/warehouse", (req, res) =>{
     }
 })
 
-// Product
-router.get("/company", (req, res) =>{
+// Editing form
+router.get("/form", (req, res) =>{
     try {
-    res.status(200).sendFile(resolve("public", "views", "companyA.html"));
+    res.status(200).sendFile(resolve("public", "views", "createItem.html"));
     } catch(err) {
         console.error(err);
     }

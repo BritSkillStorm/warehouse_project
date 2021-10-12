@@ -10,12 +10,11 @@ const postBtn = document.getElementById('');
 
 
 
- const getData = () =>{
-     axios.get(
-         'https://reqres.in/api/users'
-     ).then(res =>{
-         console.log(res)
- });
+ const getItems = () =>{
+    axios.get({
+        method: 'GET'
+        url:'./'
+    }).then(response => response.send('')).catch(err)
 };
 
 
