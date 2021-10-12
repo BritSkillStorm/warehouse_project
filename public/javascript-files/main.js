@@ -1,27 +1,29 @@
 
 
 
- const axios = require('axios');
-
-const getBtn = document.getElementById('image_btn');
-const postBtn = document.getElementById('');
 
 
 
 
 
- const getItems = () =>{
-    axios.get({
-        method: 'GET'
-        url:'./'
-    }).then(response => response.send('')).catch(err)
-};
+
+const getItems = async () =>{
+    const response = await fetch('')
+    const items = await response.json();
+
+    return items;
+
+}
 
 
-const sendData = () =>{
+document.addEventListener("DOMContentLoaded", async () =>{
+    let items =[];
+    try {
+     items = await getItems();
+    } catch(err){
+        console.log("Error!");
+        console.log(error);
+    }
 
-};
-
-
-getBtn.addEventListener('click', getData);
-postBtn.addEventListener('click', sendData);
+    console.log(items);
+})

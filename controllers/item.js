@@ -140,11 +140,29 @@ const getItemsByWarehouseId = async(req, res) =>{
 }
 */
 
+// update item by id
 const updateItem = async (req, res)=>{
     try {
 
-    } catch (err) {
 
+        console.log("testing update Item");
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('inside mongo');
+        // searching by mongoose ID ******
+        console.log('update item');
+      
+        const itemId = req.params.id;
+        const updateItem =await Item.findByIdAndUpdate(itemId);
+            if(!err) {
+                console.log(updateItem); 
+            }
+        mongoose.connection.close();
+        res.status(200);
+
+    } catch(err) {
+        console.log(err);
+        mongoose.connection.close();
+        res.status(500).json(err);
     }
 }
 
