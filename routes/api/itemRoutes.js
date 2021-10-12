@@ -1,16 +1,26 @@
 const router = require('express').Router();
 const {resolve} = require('path');
-const {addItem, deleteItem, getAllItems, updateItem} = require('../../controllers/item');
+const {addItem, deleteItemById, getAllItems, updateItem, getItemById, getItemsByWarehouseId} = require('../../controllers/item');
 
 
-// Get all items
+
+// get all items directly
+
 router.get('', getAllItems);
 
+// Get all items by warehouse id
+router.get('/:warehouseId', getItemsByWarehouseId);
+
+// get one item by id
+router.get('/1/:itemId', getItemById)
+
+
+
 // add one item
-router.post('', addItem);
+router.post('', addItem)
 
 // delete item by id
-router.get('/:id', deleteItem);
+router.delete('/:id', deleteItemById);
 
 router.patch('/:id', updateItem);
 

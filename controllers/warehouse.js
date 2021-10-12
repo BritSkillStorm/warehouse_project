@@ -11,7 +11,7 @@ const getAllWarehouses = async(req, res) =>{
         await mongoose.connect(process.env.MONGO_URI);
         console.log('inside mongo');
         const warehouses = await Warehouse.find();
-        console.log('finding companies');
+        console.log('finding warehouses');
         if(warehouses.length ===0) throw {status: 500, error: 'Could not find any warehouses.'};
         mongoose.connection.close();
         res.status(200).json(warehouses);
@@ -31,7 +31,7 @@ const addWarehouse = async(req, res) =>{
     try {
                 
         await mongoose.connect(process.env.MONGO_URI);
-        const warehouse = new Warehouse({});
+        const warehouse = new Warehouse({warehouseType :req.body.warehouseType});
         const newWarehouse = await warehouse.save();
         mongoose.connection.close();
         res.status(200).json(newWarehouse);

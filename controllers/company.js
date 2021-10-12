@@ -44,8 +44,30 @@ const addCompany = async(req, res) =>{
 
 }
 
+const getCompanyById = async(req, res) =>{
+    try {
+      
+        console.log("testing inside get company by id");
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('inside mongo');
+        // searching by mongoose ID ******
+        const company = await Company.findById(req.params.companyId);
+        console.log('finding company by id');
+        if(company == null) throw {status: 404, error: 'Could not find company'};
+        mongoose.connection.close();
+        res.status(200).json(company);
+
+    } catch(err) {
+        console.log(err);
+        mongoose.connection.close();
+        res.status(500).json(err);
+    }
+
+}
+
 
 module.exports = {
     addCompany,
-    getAllCompanies
+    getAllCompanies,
+    getCompanyById
 }

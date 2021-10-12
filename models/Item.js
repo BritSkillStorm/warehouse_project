@@ -12,7 +12,8 @@ const itemSchema = new Schema({
     amount: Number,
     price: Number,
     description: String,
-    warehouse :{ type: Schema.Types.ObjectId, ref: 'Warehouse'}
+
+    //warehouse :{ type: Schema.Types.ObjectId, ref: 'Warehouse'}
 });
 
 const Item = mongoose.model('Item', itemSchema);
