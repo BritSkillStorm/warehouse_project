@@ -125,47 +125,32 @@ const getItemsByWarehouseId = async(req, res) =>{
 
 }
 
-
-/*const getAllItems = async () =>{
-    try {
-        await mongoose.connection(process.env.MONGO_URI);
-        const items = await Item.find();
-        if(items.length ===0) throw {status: 500, error: 'Could not find any items.'};
-        mongoose.connection.close();
-        return items;
-    } catch (err) {
-        mongoose.connection.close();
-        throw err;
-    }
-}
-*/
-
 // update item by id
-const updateItem = async (req, res)=>{
-    try {
+    const updateItem = async (req, res)=>{
+        try {
 
 
-        console.log("testing update Item");
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('inside mongo');
-        // searching by mongoose ID ******
-        console.log('update item');
-      
-        const itemId = req.params.id;
-        const updateItem =await Item.findByIdAndUpdate(itemId);
-            if(!err) {
-                console.log(updateItem); 
+            console.log("testing update Item");
+            await mongoose.connect(process.env.MONGO_URI);
+            console.log('inside mongo');
+            // searching by mongoose ID ******
+            console.log('update item');
+        
+            Item.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true},(err, result)=> {
+
+                if(!err) {
+                    console.log(result); 
             }
-        mongoose.connection.close();
-        res.status(200);
+            mongoose.connection.close();
+            res.status(200);
 
-    } catch(err) {
-        console.log(err);
-        mongoose.connection.close();
-        res.status(500).json(err);
+        });}catch(err) {
+            console.log(err);
+            mongoose.connection.close();
+            res.status(500).json(err);
     }
-}
 
+    }
 
 
 module.exports = {
