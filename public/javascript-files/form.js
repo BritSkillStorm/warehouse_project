@@ -1,7 +1,6 @@
 
 
 const url = '/items/form';
-const addItemForm = document.querySelector('.add-item-form');
 const itemTitle = document.getElementById('itemName');
 const amount = document.getElementById('amount');
 const price = document.getElementById('price');
@@ -33,6 +32,7 @@ button.addEventListener('click',(e) =>{
     })
     .then(res => res.json()).then(()=>document.location.href="/warehouse");
 })
+
 
 
 
