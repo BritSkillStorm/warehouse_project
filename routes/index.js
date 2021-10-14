@@ -22,7 +22,7 @@ router.get("/warehouse", (req, res) =>{
 // Editing form
 router.get("/form", (req, res) =>{
     try {
-    res.status(200).sendFile(resolve("public", "views", "createItem.html"));
+    res.status(200).sendFile(resolve("public", "views", "addItem.html"));
     } catch(err) {
         console.error(err);
     }

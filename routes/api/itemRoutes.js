@@ -12,15 +12,15 @@ router.get('', getAllItems);
 router.get('/:warehouseId', getItemsByWarehouseId);
 
 // get one item by id
-router.get('/1/:itemId', getItemById)
+router.get('/1/:itemId', getItemById);
 
 
 
 // add one item
-router.post('', addItem)
+router.post('/form', addItem);
 
 // delete item by id
-router.delete('/:id', deleteItemById);
+router.delete('/delete/:id', deleteItemById);
 
 router.patch('/:id', updateItem);
 

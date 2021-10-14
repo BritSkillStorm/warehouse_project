@@ -33,8 +33,9 @@ const addItem = async(req, res) =>{
     try {
                 
         await mongoose.connect(process.env.MONGO_URI);
+        console.log(req.body);
         const item = new Item({
-            itemName: req.body.itemName,
+            itemName: req.body.itemTitle,
             amount : req.body.amount,
             price : req.body.price,
             description : req.body.description,
@@ -62,7 +63,7 @@ const getItemById = async(req, res) =>{
         console.log('inside mongo');
         // searching by mongoose ID ******
         const item = await Item.findById(req.params.itemId);
-        console.log('finding warehouse by id');
+    
         if(item == null) throw {status: 404, error: 'Could not find item.'};
         mongoose.connection.close();
         res.status(200).json(item);
@@ -86,15 +87,18 @@ const deleteItemById = async(req, res) =>{
         console.log('inside mongo');
         // searching by mongoose ID ******
         console.log('finding item by id to delete');
-      
-        const itemId = req.params.id;
-        const deleteItem =await Item.findByIdAndRemove(itemId);
-            if(!err) {
-                console.log(deleteItem); 
-            }
-        mongoose.connection.close();
-        res.status(200);
 
+      
+       await Item.findByIdAndRemove(req.params.id,(err, result)=> {
+
+            if(!err) {
+                console.log(result); 
+        }
+ 
+            mongoose.connection.close();
+            res.status(200);
+        });
+       
     } catch(err) {
         console.log(err);
         mongoose.connection.close();
@@ -136,7 +140,7 @@ const getItemsByWarehouseId = async(req, res) =>{
             // searching by mongoose ID ******
             console.log('update item');
         
-            Item.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true},(err, result)=> {
+           await Item.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true},(err, result)=> {
 
                 if(!err) {
                     console.log(result); 
@@ -144,7 +148,8 @@ const getItemsByWarehouseId = async(req, res) =>{
             mongoose.connection.close();
             res.status(200);
 
-        });}catch(err) {
+        });
+    }catch(err) {
             console.log(err);
             mongoose.connection.close();
             res.status(500).json(err);

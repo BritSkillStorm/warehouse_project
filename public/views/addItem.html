@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../styles/index.css"/>
     <link rel="stylesheet" href="../styles/slider.css"/>
-    <script src=""></script>
+   
     <title>Warehouse Portal</title>
 </head>
 <body>
@@ -20,22 +20,24 @@
     
     <h1>Item Form</h1>
     
-    <form id="itemForm" method="POST" action="/items">
+    <form class="add-item-form"id="add-item-form">
         <div>
             <label for="itemName">Item name: </label>
             <input id="itemName" type="text" name="itemName"/>
         </div>
         <div>
-           Amount: <input type="number" name="amount"/>
+           Amount: <input id="amount" type="number" name="amount"/>
         </div>
         <div>
-            Price <input type="number" name="price"/>
+            Price <input id="price" type="number" name="price"/>
         </div>
         <div>
             Description 
-            <textarea rows="4" cols="50" name="description" form ="itemForm"></textarea>
+            <textarea id="description" rows="4" cols="50" name="description" form ="add-item-form"></textarea>
         </div>
-        <input type="submit" value="Submit"/>
-        
+        <button id="add-item-button" value="Submit" > Submit </button>
+       </form>
+
+       <script src="../javascript-files/form.js"></script>
 </body>
 </html>
