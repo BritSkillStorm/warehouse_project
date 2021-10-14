@@ -73,13 +73,6 @@ body {
 }
 
 
-/* 
-    background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 100%);
-    text-align: center;
-    color: #ffffff;
-    height: auto;
-    text-shadow: 0 5px 10px rgb(0 0 0 / 33%), 0 0 4px rgb(0 0 0 / 33%);
-}*/
 
 .slider-text-container{
 
@@ -152,17 +145,6 @@ box-shadow: -0.01rem -0.1rem 0.1rem 0.1rem  rgb(5, 5, 5,5);
 
 
 }
-
-/*
-.slider__caption {
-    background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 100%);
-    text-align: center;
-    color: #ffffff;
-    height: auto;
-    text-shadow: 0 5px 10px rgb(0 0 0 / 33%), 0 0 4px rgb(0 0 0 / 33%);
-
-
-}*/
 
 .slider__caption {
     background: linear-gradient(to bottom,rgba(0,0,0,0),0 rgba(3,3,3,0.6) 80%);

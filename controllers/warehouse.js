@@ -2,7 +2,7 @@ const Warehouse =require('../models/warehouse');
 const mongoose = require('mongoose');
 
 
-// getting companies
+// getting warehouses
 
 const getAllWarehouses = async(req, res) =>{
     try {
