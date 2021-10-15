@@ -1,17 +1,20 @@
-const router = require('express').Router();
-const {getAllCompanies, addCompany, getCompanyById} = require('../../controllers/company');
+const router = require("express").Router();
+const {
+  getAllCompanies,
+  addCompany,
+  getCompanyById,
+} = require("../../controllers/company");
 
-
-
+//Routes available for additional companies.
 
 // get all companies
-router.get('', getAllCompanies);
+router.get("", getAllCompanies);
 
 // get company by id
 
-router.get('/:companyId', getCompanyById)
+router.get("/:companyId", getCompanyById);
 
 // get one company
-router.post('', addCompany);
+router.post("", addCompany);
 
 module.exports = router;

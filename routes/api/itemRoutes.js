@@ -24,6 +24,7 @@ router.post("/form", addItem);
 // delete item by id
 router.delete("/delete/:id", deleteItemById);
 
+//update item by id
 router.patch("/update/:id", updateItem);
 
 module.exports = router;

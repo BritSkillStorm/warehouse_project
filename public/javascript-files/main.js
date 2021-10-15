@@ -70,9 +70,11 @@ const deleteItem = (e) => {
 
   // Delete existing item
   // Method :Delete
-  fetch(`${url}/delete/${itemId}`, { method: "DELETE" }).then(() =>
-    location.reload()
-  );
+  fetch(`${url}/delete/${itemId}`, { method: "DELETE" })
+    .then(() => location.reload())
+    .catch((err) => {
+      location.reload();
+    });
 };
 
 const editItem = async (e) => {
@@ -133,5 +135,5 @@ const editItem = async (e) => {
   saveButton.addEventListener("click", sendEditRequest);
 };
 
-// currently won't
+//calling get items on load
 window.onload = getItems();

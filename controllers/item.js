@@ -2,7 +2,6 @@ const Item = require("../models/Item");
 const mongoose = require("mongoose");
 
 // get all items from item table
-
 const getAllItems = async (req, res) => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -41,7 +40,6 @@ const addItem = async (req, res) => {
 };
 
 // get item by id
-
 const getItemById = async (req, res) => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -57,6 +55,7 @@ const getItemById = async (req, res) => {
   }
 };
 
+//delete item by id
 const deleteItemById = async (req, res) => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -98,7 +97,6 @@ const updateItem = async (req, res) => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     // searching by mongoose ID ******
-    console.log("update item");
     const updatedItem = await Item.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
