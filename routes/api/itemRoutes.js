@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { resolve } = require("path");
 const {
   addItem,
   deleteItemById,

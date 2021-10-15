@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.6;
+  background-color: #c6c5b9;
+}
+
+/* remove scroll bars, but keep function*/
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 80%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary--color);
+}
+
+/* company-showcase*/
+
+/* item-display table*/
+
+.dataTable {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.dataTable thead,
+.dataTable tbody,
+.dataTable thead tr,
+.dataTable th {
+  display: block;
+}
+
+.dataTable thead {
+  float: left;
+}
+
+.dataTable tbody {
+  width: auto;
+  position: relative;
+  overflow-x: auto;
+}
+
+.dataTable td,
+.dataTable th {
+  padding: 0.625em;
+  line-height: 1.5em;
+  border-bottom: 1px dashed #ccc;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dataTable th {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.14);
+  border-bottom: 1px dashed #aaa;
+}
+
+.dataTable tbody tr {
+  display: table-cell;
+}
+
+.dataTable tbody td {
+  display: block;
+}
+
+.dataTable tr:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (min-width: 50em) {
+  .dataTable {
+    display: table;
+  }
+
+  .dataTable thead {
+    display: table-header-group;
+    float: none;
+  }
+
+  .dataTable tbody {
+    display: table-row-group;
+  }
+
+  .dataTable thead tr,
+  .dataTable tbody tr {
+    display: table-row;
+  }
+
+  .dataTable th,
+  .dataTable tbody td {
+    display: table-cell;
+  }
+
+  .dataTable td,
+  .dataTable th {
+    width: auto;
+  }
+}
+
+/* Navbar */
+
+/* Utility CSS*/
+/*
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  height: 400px;
+  width: 300px;
+
+  border-radius: 10px;
+  box-shadow: -0.5rem 0 0.2rem rgb(5, 5, 5);
+  
+  //   margin-left: -50px;
+  transition: 0.4s ease-out;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:not(:first-child) {
+  margin-left: -20px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 20px;
+  transition: 0.4s ease-out;
+}
+
+.card-title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.card-links {
+  margin-top: auto;
+}
+
+.card-link-image:hover {
+  cursor: pointer;
+}
+ */
+/*
+  .card{
+     
+      margin-right: 25px;
+      background-color: #fff;
+      width: 70%;
+      height: 100%;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 13px 10px -7px rgba(0,0,0,0.1);
+  
+  }
+  .card__info{
+      z-index:2;
+      background-color: #fff;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      padding: 16px 24px 24px 24px;
+  }
+  
+  .card__category{
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: 500;
+  }
+  
+  .card__img{
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 300px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+     
+  
+  }
+  
+  .card__title{
+      margin-top: 5px;
+      margin-bottom: 10px;
+  }
+  
+  */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+/*
+  .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+     
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      max-width: 820px;
+      width: 100%;
+  
+  }
+  */
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

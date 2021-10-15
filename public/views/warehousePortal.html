@@ -21,20 +21,61 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="../styles/index.css" />
-    <link rel="stylesheet" href="../styles/slider.css" />
+    <link resl="stylesheet" href="../styles/warehousePortal.css" />
 
     <title>Warehouse Portal</title>
   </head>
-  <body>
-    <h1>Ware House landing</h1>
 
-    <a href="/form">Click here to add an item</a>
-    <div class="items-list row">
-      <div class="item-display mt-4 col-md-6 bg-dark">
-        <div class="item-body"></div>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
+      <div class="container">
+        <a href="" class="navbar-brand">testing</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Link</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <h1 class="wareHouse-title text-center text-black-50 p-5">
+      Ware House landing
+    </h1>
+    <div class="add-item-link">
+      <a href="/form" class="add-item-link">Click here to add an item</a>
     </div>
+
+    <table class="item-display">
+      <thead>
+        <tr>
+          <th>Numbers</th>
+          <th>Names</th>
+          <th>Values</th>
+          <th>Dates</th>
+          <th>Cash Money</th>
+          <th>Messages</th>
+          <th>Buttons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="items-list"></tr>
+      </tbody>
+    </table>
   </body>
   <script src="../javascript-files/main.js"></script>
 </html>
