@@ -21,7 +21,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
-    <link resl="stylesheet" href="../styles/warehousePortal.css" />
+    <link rel="stylesheet" href="../styles/warehousePortal.css" />
 
     <title>Warehouse Portal</title>
   </head>
@@ -29,7 +29,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
       <div class="container">
-        <a href="" class="navbar-brand">testing</a>
+        <a href="/" class="navbar-brand">testing</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -59,23 +59,20 @@
     <div class="add-item-link">
       <a href="/form" class="add-item-link">Click here to add an item</a>
     </div>
-
-    <table class="item-display">
-      <thead>
-        <tr>
-          <th>Numbers</th>
-          <th>Names</th>
-          <th>Values</th>
-          <th>Dates</th>
-          <th>Cash Money</th>
-          <th>Messages</th>
-          <th>Buttons</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="items-list"></tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper col-10 row-4" id="warehouse-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="warehouse-table-body"></tbody>
+      </table>
+    </div>
   </body>
   <script src="../javascript-files/main.js"></script>
 </html>

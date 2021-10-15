@@ -1,5 +1,6 @@
 // grabbing item list element from warehouse.Portal
 const itemsList = document.querySelector(".items-list");
+const warehouseItemsTableBody = document.querySelector("#warehouse-table-body");
 
 // base url
 const url = "/items";
@@ -18,136 +19,95 @@ let output = ``;
 // render all items through render function
 const renderItems = (items) => {
   items.forEach((item) => {
-    output += `
-         <div class="item-display mt-4 col-md-6 bg-dark" id="item-display-${item._id}">
-                 <tbody class="item-contents" data-id="${item._id}">
-                      <tr>
-                     <td id="itemName" class="itemName" style="color:white"> ${item.itemName} </td>
-                     <td id="amount" class="amount" style="color:white"> ${item.amount} </td>
-                     <td id="price" class="price"style="color:white">  $${item.price} </td>
-                     <td id="description" class="description"style="color:white"> ${item.description} </td>
-                    <button  class="edit-item" id="edit-item" data-id="${item._id}"> Edit </ button>
-                    <button class="delete-item" id="delete-item"> Delete </button>
-                    </tr>
-                    
-                 </tbody>
-         </div>
-        
-        `;
-  });
-  itemsList.innerHTML = output;
-  let editButtons = document.querySelectorAll(".edit-item");
-  editButtons.forEach((button) => {
-    button.addEventListener("click", editItem);
+    const tDataRow = document.createElement("tr");
+
+    // create cells
+    const itemNameCell = document.createElement("td");
+    itemNameCell.classList.add("itemName");
+    const itemAmountCell = document.createElement("td");
+    itemAmountCell.classList.add("amount");
+    const itemPriceCell = document.createElement("td");
+    itemPriceCell.classList.add("price");
+    const itemDescriptionCell = document.createElement("td");
+    itemDescriptionCell.classList.add("description");
+    const itemButtonsCell = document.createElement("td");
+
+    // add data to cells
+    itemNameCell.innerText = item.itemName;
+    itemAmountCell.innerText = item.amount;
+    itemPriceCell.innerText = item.price;
+    itemDescriptionCell.innerText = item.description;
+
+    // setup edit/delete buttons
+    const editButton = document.createElement("button");
+    editButton.innerText = "Edit";
+    editButton.classList.add("edit-item");
+    editButton.setAttribute("data-id", item._id);
+    editButton.addEventListener("click", editItem);
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteButton.setAttribute("data-id", item._id);
+    deleteButton.classList.add("delete-item");
+    deleteButton.addEventListener("click", deleteItem);
+    itemButtonsCell.appendChild(editButton);
+    itemButtonsCell.appendChild(deleteButton);
+
+    // add cells to row
+    tDataRow.appendChild(itemNameCell);
+    tDataRow.appendChild(itemAmountCell);
+    tDataRow.appendChild(itemPriceCell);
+    tDataRow.appendChild(itemDescriptionCell);
+    tDataRow.appendChild(itemButtonsCell);
+
+    // add row to table
+    warehouseItemsTableBody.appendChild(tDataRow);
   });
 };
 
-// extra table
-/*
-<table class="dataTable">
-<thead>
-  <tr>
-    <th>Numbers</th>
-    <th>Names</th>
-    <th>Values</th>
-    <th>Dates</th>
-    <th>Cash Money</th>
-    <th>Messages</th>
-    <th>Buttons</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><a href="#">000000001</a></td>
-    <td>Dr. Jayhawk</td>
-    <td>102</td>
-    <td>03/30/1940</td>
-    <td>$60.42</td>
-    <td>PAID</td>
-    <td>
-      <button class="button action">Select</button>
-    </td>
-  </tr>
-
-*/
-
 // DELETE - Delete items by id.
-itemsList.addEventListener("click", (e) => {
-  let delButtonPressed = e.target.id == "delete-item";
-
-  // grabbing parent element id to delete.
-  let id = e.target.parentElement.dataset.id;
+const deleteItem = (e) => {
+  const itemId = e.target.getAttribute("data-id");
 
   // Delete existing item
   // Method :Delete
-  if (delButtonPressed) {
-    fetch(`${url}/delete/${id}`, { method: "DELETE" })
-      .then((res) => res.json())
-      .then(() => location.reload());
-  }
-});
+  fetch(`${url}/delete/${itemId}`, { method: "DELETE" }).then(() =>
+    location.reload()
+  );
+};
 
 const editItem = async (e) => {
-  const parent = e.target.parentElement;
-  console.log(parent);
-  const itemTitle = document.getElementById("itemName");
-  const amount = document.getElementById("amount");
-  const price = document.getElementById("price");
-  const description = document.getElementById("description");
+  const parent = e.target.parentElement.parentElement;
+  const itemContentsId = e.target.getAttribute("data-id");
 
-  let itemNameContent = parent.querySelector(".itemName").textContent;
-  let amountContent = parent.querySelector(".amount").textContent;
-  let priceContent = parent.querySelector(".price").textContent;
-  let descriptionContent = parent.querySelector(".description").textContent;
+  e.target.style.display = "none";
+  const saveButton = document.createElement("button");
+  saveButton.classList.add("save-item");
+  saveButton.textContent = "Save";
+  e.target.parentElement.insertBefore(saveButton, e.target);
 
-  // passing current state from parent div
+  let itemName = parent.querySelector(".itemName");
+  const itemNameInput = document.createElement("input");
+  itemNameInput.value = itemName.textContent;
+  itemName.textContent = "";
+  itemName.appendChild(itemNameInput);
 
-  itemTitle.value = itemNameContent;
-  amount.value = amountContent;
-  price.value = priceContent;
-  description.value = descriptionContent;
+  let amount = parent.querySelector(".amount");
+  const amountInput = document.createElement("input");
+  amountInput.value = amount.textContent;
+  amount.textContent = "";
+  amount.appendChild(amountInput);
 
-  //creating card form
-  const cardForm = document.createElement("form");
+  let price = parent.querySelector(".price");
+  const priceInput = document.createElement("input");
+  priceInput.value = price.textContent;
+  price.textContent = "";
+  price.appendChild(priceInput);
 
-  //creating card title
-  const cardTitleLabel = document.createElement("label");
-  cardTitleLabel.textContent = "Enter Item Name";
-  //creating title input
-  const cardTitleInput = document.createElement("input");
-  cardTitleInput.setAttribute("type", "text");
-  cardTitleInput.setAttribute("id", "updateItemName");
-
-  //creating amount title
-  const cardAmount = document.createElement("label");
-  cardAmount.textContent = "Enter Item Amount";
-
-  //creating amount input
-  const cardAmountInput = document.createElement("input");
-  cardAmountInput.setAttribute("type", "Number");
-  cardAmountInput.setAttribute("id", "updateItemAmount");
-
-  //creating price label
-  const cardPriceLabel = document.createElement("label");
-  cardPriceLabel.textContent = "Enter Price";
-
-  // creating price input
-  const cardPriceInput = document.createElement("input");
-  cardPriceInput.setAttribute("type", "Number");
-  cardPriceInput.setAttribute("id", "updateItemPrice");
-
-  //create description label
-  const cardDescLabel = document.createElement("label");
-  cardDescLabel.textContent = "Enter Description";
-
-  // creating description input
-
-  const cardDescInput = document.createElement("input");
-  cardDescInput.setAttribute("type", "text");
-  cardDescInput.setAttribute("id", "updateItemDesc");
-
-  const submitButton = document.createElement("button");
-  submitButton.textContent = "submit";
+  let description = parent.querySelector(".description");
+  const descriptionInput = document.createElement("input");
+  descriptionInput.value = description.textContent;
+  description.textContent = "";
+  description.appendChild(descriptionInput);
 
   // Update - update existing item.
   // Method : PATCH
@@ -159,34 +119,19 @@ const editItem = async (e) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        itemName: cardTitleInput.value,
-        amount: cardAmountInput.value,
-        price: cardPriceInput.value,
-        description: cardDescInput.value,
+        itemName: itemNameInput.value,
+        amount: amountInput.value,
+        price: priceInput.value,
+        description: descriptionInput.value,
       }),
     })
       .then((res) => res.json())
       .then(() => document.location.reload());
   };
 
-  // submit button event listener
-  submitButton.addEventListener("click", sendEditRequest);
-
-  cardForm.append(cardTitleLabel);
-  cardForm.append(cardTitleInput);
-  cardForm.append(cardAmount);
-  cardForm.append(cardAmountInput);
-  cardForm.append(cardPriceLabel);
-  cardForm.append(cardPriceInput);
-  cardForm.append(cardDescLabel);
-  cardForm.append(cardDescInput);
-  cardForm.append(submitButton);
-
-  const itemContentsId = e.target.getAttribute("data-id");
-  document.getElementById(`item-display-${itemContentsId}`).append(cardForm);
+  // save button event listener
+  saveButton.addEventListener("click", sendEditRequest);
 };
 
 // currently won't
-window.onload = async () => {
-  await getItems();
-};
+window.onload = getItems();

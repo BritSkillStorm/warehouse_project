@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 body {
   font-family: "Source Sans Pro", sans-serif;
   line-height: 1.6;
@@ -11,6 +5,7 @@ body {
 }
 
 /* remove scroll bars, but keep function*/
+
 html {
   overflow: scroll;
   overflow-x: hidden;
@@ -48,35 +43,33 @@ img {
   background-color: var(--primary--color);
 }
 
-/* company-showcase*/
-
 /* item-display table*/
-
-.dataTable {
+/*
+.item-display {
   display: block;
   width: 100%;
   margin: 1em 0;
 }
 
-.dataTable thead,
-.dataTable tbody,
-.dataTable thead tr,
-.dataTable th {
+.item-display thead,
+.item-display tbody,
+.item-display thead tr,
+.item-display th {
   display: block;
 }
 
-.dataTable thead {
+.item-display thead {
   float: left;
 }
 
-.dataTable tbody {
+.item-display tbody {
   width: auto;
   position: relative;
   overflow-x: auto;
 }
 
-.dataTable td,
-.dataTable th {
+.item-display td,
+.item-display th {
   padding: 0.625em;
   line-height: 1.5em;
   border-bottom: 1px dashed #ccc;
@@ -85,54 +78,54 @@ img {
   overflow-y: auto;
 }
 
-.dataTable th {
+.item-display th {
   text-align: left;
   background: rgba(0, 0, 0, 0.14);
   border-bottom: 1px dashed #aaa;
 }
 
-.dataTable tbody tr {
+.item-display tbody tr {
   display: table-cell;
 }
 
-.dataTable tbody td {
+.item-display tbody td {
   display: block;
 }
 
-.dataTable tr:nth-child(odd) {
+.item-display tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.07);
 }
 
 @media screen and (min-width: 50em) {
-  .dataTable {
+  .item-display {
     display: table;
   }
 
-  .dataTable thead {
+  .item-display thead {
     display: table-header-group;
     float: none;
   }
 
-  .dataTable tbody {
+  .item-display tbody {
     display: table-row-group;
   }
 
-  .dataTable thead tr,
-  .dataTable tbody tr {
+  .item-display thead tr,
+  .item-display tbody tr {
     display: table-row;
   }
 
-  .dataTable th,
-  .dataTable tbody td {
+  .item-display th,
+  .item-display tbody td {
     display: table-cell;
   }
 
-  .dataTable td,
-  .dataTable th {
+  .item-display td,
+  .item-display th {
     width: auto;
   }
 }
-
+*/
 /* Navbar */
 
 /* Utility CSS*/
